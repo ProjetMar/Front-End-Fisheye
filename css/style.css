@@ -44,7 +44,34 @@ h1 {
     font-size: 36px;
 }
 
-.photographer_section article img {
+/* .photographer_section article img {
     height: 200px;
     width: 200px;
+} */
+.photographer_section article img {
+    position: relative;
+    width: 226px;
+    left: -12.5px;
+    top: -9px;
+}
+.container-image{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    
+} 
+.photographer_section article p{
+    margin: 0px;
+}
+.cardCity{
+    font-size: 13px;
+    color: #901C1C;
+}
+.cardTagline{
+    font-size: 9px;
+}
+.cardPrice{
+    font-size: 9px;
+    color: #757575;
 }
