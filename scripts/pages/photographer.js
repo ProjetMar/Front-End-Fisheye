@@ -10,14 +10,23 @@ async function getPhotographers() {
     return(photographers);
 }
 async function displayData(photographers){
+    const photographersSection = document.querySelector(".photograph-header");
+    const photographContactBouton = document.querySelector(".contact_button");
+    
     const photographer = photographers.find((photographer) => photographer.id === parseInt(Id));
-    return(photographer)
+    const photographerModel = new photographerTemplate(photographer);
+
+    const userInfoDOM = photographerModel.getUserHeaderInfDOM(); 
+    photographersSection.insertBefore(userInfoDOM, photographContactBouton);
+
+    const userImgDOM = photographerModel.getUserHeaderImgDOM();
+    photographersSection.appendChild(userImgDOM);
 }
 
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
-    console.log(displayData(photographers));
+    displayData(photographers);
 }
 
 init();

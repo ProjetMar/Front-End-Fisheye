@@ -39,16 +39,33 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photographer_section article h2, .photograph-header h2 {
     color: #D3573C;
     font-size: 36px;
+}
+.photograph-header h2 {
+    font-size: 64px;
+    margin: 0px;
+}
+.photograph-header .cartCity{
+    font-size: 24px;
+}
+
+.photograph-header .cartTagline{
+    font-size: 18px;
+}
+.cartCity{
+    color: #901C1C;
+}
+.cartPrice{
+    color: #757575;
 }
 
 /* .photographer_section article img {
     height: 200px;
     width: 200px;
 } */
-.photographer_section article img {
+.photographer_section article img, .photograph-header img{
     position: relative;
     width: 226px;
     left: -12.5px;
@@ -58,22 +75,28 @@ h1 {
     width: 200px;
     height: 200px;
     overflow: hidden;
-    border-radius: 50%;
-    margin: auto;
-    
+    border-radius: 50%; 
 } 
-.photographer_section article p{
+.photographer_section .container-image{
+    margin: auto;
+}
+.photographer_section article p, .photograph-header p{
     margin: 0px;
 }
-.cardCity{
+.photographer_section article .cartCity{
     font-size: 13px;
+}
+.photographer_section article .cartTagline{
+    font-size: 9px;
+}
+.photographer_section article .cartPrice{
+    font-size: 9px;
+}
+
+.cartCity{
     color: #901C1C;
 }
-.cardTagline{
-    font-size: 9px;
-}
-.cardPrice{
-    font-size: 9px;
+.cartPrice{
     color: #757575;
 }
 .photographer_section article a{
