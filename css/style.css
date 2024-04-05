@@ -59,6 +59,7 @@ h1 {
     height: 200px;
     overflow: hidden;
     border-radius: 50%;
+    margin: auto;
     
 } 
 .photographer_section article p{
@@ -74,4 +75,8 @@ h1 {
 .cardPrice{
     font-size: 9px;
     color: #757575;
+}
+.photographer_section article a{
+    text-decoration: none;
+    text-align: center;
 }
