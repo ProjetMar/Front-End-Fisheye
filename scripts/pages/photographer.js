@@ -12,6 +12,10 @@ async function getPhotographers() {
 
 const mainDOM = document.getElementById("main"); 
 
+//afficher la liste 
+let sectionListeDOM = getListeDOM();
+mainDOM.appendChild(sectionListeDOM);
+
 async function displayData(photographers){
     const photographersSection = document.querySelector(".photograph-header");
     const photographContactBouton = document.querySelector(".contact_button");
@@ -35,22 +39,23 @@ async function displayMedia(photographers, media){
     mainDOM.appendChild(sectionMedia);
     const mediaPhotographer = media.filter((medias)=>medias.photographerId === parseInt(Id));
     const namePhotographer = photographer.name;
-    // const Tarif = photographer.price;
-    console.log(mediaPhotographer);
-
-    // let SommeLike = 0;
-    // mediaPhotographer.forEach((media)=>
-    // {
-    //     SommeLike+=media.likes;
-    // });
-    // console.log("la somme des likes est" + SommeLike);
-
+   
     mediaPhotographer.forEach((ElementMediaPhotographer) => {
         const mediaModel = new MediaFactory(ElementMediaPhotographer, namePhotographer);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         sectionMedia.appendChild(mediaCardDOM);
     })
-    // mainDOM.appendChild(getTarifLikes(SommeLike,Tarif)); 
+    //affichage de Tarif et somme likes
+    const Tarif = photographer.price;
+    let SommeLike = 0;
+    mediaPhotographer.forEach((media)=>
+    {
+        SommeLike+=media.likes;
+    });
+    console.log("la somme des likes est" + SommeLike);
+    const tarifLikes = new TarifLikes(Tarif, SommeLike);
+    const divLikesTarif = tarifLikes.getTarifLikes()
+    mainDOM.appendChild(divLikesTarif); 
 }
 
 async function init() {

@@ -67,12 +67,35 @@ class MediaVideo {
         const video = clone.querySelector("video");
         video.setAttribute("src", this.picture);
 
-        const p = clone.querySelector(".TitleLike-media").firstElementChild;
+        const p = clone.querySelector(".TitleLike-media p");
         p.textContent = this.title;
 
-        const pNumbreLike = clone.querySelector(".Likes-media").firstElementChild;
+        const pNumbreLike = clone.querySelector(".Likes-media p");
         pNumbreLike.textContent = this.likes;
 
         return(clone)
     }
+}
+class TarifLikes{
+    constructor(SommeLike, tarif){
+        this.SommeLike = SommeLike;
+        this.tarif = tarif;
+    }
+    template(idTemplate){
+        const template = document.getElementById(idTemplate);
+        const clone = document.importNode(template.content,true);
+        return(clone)
+    }
+    getTarifLikes(){
+        const clone = this.template("TarifLikesSomme");
+
+        const pSommeLike = clone.querySelector('.Somme-like p');
+        pSommeLike.textContent = this.SommeLike;
+
+        const pTarif = clone.querySelector('.tarifParJour');
+        pTarif.textContent = `${this.tarif}€ / jour`;
+
+        return(clone)
+    }
+
 }

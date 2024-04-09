@@ -159,3 +159,89 @@ section{
     justify-content: center;
     align-items: center;
 }
+/* style de la liste */
+.section-liste{
+    display: flex;
+    margin: 10px 100px;
+    font-size: 18px;
+}
+.block-liste{
+    position: relative;
+    margin-left: 20px;
+    align-self: auto;
+    z-index: 1;
+}
+#sortButton, #sortOptions{
+    width: 170px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    color: white;
+}
+#sortButton{
+    font-size: 18px;
+    border: none;
+    font-weight: bold;
+}
+#sortOptions{
+   visibility: hidden;
+   position: absolute;
+   margin: 0;
+   top: 0;
+   left: 0;
+   cursor: pointer;
+   list-style: none;
+   padding-left: 0px;
+   text-align: center;
+   font-weight: bold;
+}
+#sortOptions li{
+    padding-bottom: 10px;
+}
+#sortOptions .souligne{
+    position: relative;
+}
+#sortOptions .souligne:after {
+    content: "";
+    position: absolute;
+    left: 10%; /* Ajustez cette valeur pour modifier la position horizontale de la ligne */
+    width: 80%; /* Ajustez cette valeur pour modifier la largeur de la ligne */
+    bottom: -5px; /* Réglez la position verticale de la ligne */
+    height: 2px; /* Épaisseur de la ligne */
+    background-color: white; /* Couleur de la ligne */
+  }
+label{
+    font-weight: bold;
+}
+li, #sortButton, .flech i, label{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+li, #sortButton{
+    padding-left: 20px;
+    text-align: left;
+}
+.flech{
+    visibility: visible;
+    position: absolute;
+     top: 0;
+    left: 135px;
+    color: white;
+    z-index: 1;
+}
+/* Tarif/jour et somme Likes */
+.Block-tarif{
+    position: fixed;
+    right: 10px;
+    bottom: 0;
+    background-color: #DB8876;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 5px 5px 0px 0px;
+    width: 376px;
+}
+.Somme-like{
+    display: flex;
+    align-items: center;
+}
