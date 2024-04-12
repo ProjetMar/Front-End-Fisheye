@@ -30,14 +30,14 @@ async function displayData(photographers){
     photographersSection.appendChild(userImgDOM);
 }
 
-async function displayMedia(photographers, media){
+async function displayMedia(photographers, mediaPhotographer){
 
     const sectionMedia = document.createElement('section');
     const photographer = photographers.find((photographer) => photographer.id === parseInt(Id));
     sectionMedia.classList.add = "section-media";
 
     mainDOM.appendChild(sectionMedia);
-    const mediaPhotographer = media.filter((medias)=>medias.photographerId === parseInt(Id));
+    // const mediaPhotographer = media.filter((medias)=>medias.photographerId === parseInt(Id));
     const namePhotographer = photographer.name;
    
     mediaPhotographer.forEach((ElementMediaPhotographer) => {
@@ -64,7 +64,11 @@ async function init() {
     const { photographers } = await getPhotographers();
     displayData(photographers);
     const { media } = await getPhotographers();
-    displayMedia(photographers, media);
+    const mediaPhotographer = media.filter((medias)=>medias.photographerId === parseInt(Id));
+    mediaPhotographer.sort(function(a,b){
+        return(b.likes - a.likes)
+    });
+    displayMedia(photographers, mediaPhotographer);
     let videoBlock = document.querySelector('.video-block');
     console.log(videoBlock);
     videoBlock.addEventListener('click',()=>{
@@ -74,7 +78,61 @@ async function init() {
         }else{
             video.pause();
         }
-    }); 
+    });
+    // gerer la liste de choix 
+    const Date = document.getElementById("Date");
+    Date.addEventListener('click', ()=>{
+        if (Date.getAttribute("aria-selected") == "true"){    
+            let mediasPhotographerTri = Array.from(mediaPhotographer);
+            mediasPhotographerTri.sort(function(a,b){
+                let JJa = a.date.split('-')[2];
+                let JJb = b.date.split('-')[2];
+                return (parseInt(JJa)-parseInt(JJb))
+            })
+            mediasPhotographerTri.sort(function(a,b){
+                let MMa = a.date.split('-')[1];
+                let MMb = b.date.split('-')[1];
+                return (parseInt(MMa)-parseInt(MMb))
+            })
+            mediasPhotographerTri.sort(function(a,b){
+                let AAAAa = a.date.split('-')[0];
+                let AAAAb = b.date.split('-')[0];
+                return(parseInt(AAAAa)- parseInt(AAAAb))
+            })
+        
+            console.log(mediasPhotographerTri)
+            document.querySelector('section').remove();
+           displayMedia(photographers, mediasPhotographerTri);
+        }
+    });
+    const Titre = document.getElementById("Titre");
+    Titre.addEventListener('click', ()=>{
+        let mediasPhotographerTri = Array.from(mediaPhotographer);
+            mediasPhotographerTri.sort(function(a,b){
+                if (isNaN(b.title.substr(0,1)) == false){
+                     return (1)
+                }else if(isNaN(a.title.substr(0,1)) == false){
+                    return(-1)
+                }else{
+                    return(0)
+                }
+                //a.title.localeCompare(b.titre)
+            })
+            mediasPhotographerTri.sort(function(a,b){
+                if(isNaN(b.title.substr(0,1)) == true && isNaN(a.title.substr(0,1)) == true){
+                    return(a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+                }
+            })
+
+        console.log(mediasPhotographerTri)
+        document.querySelector('section').remove();
+        displayMedia(photographers, mediasPhotographerTri);  
+    });
+    const Popularite = document.getElementById("Popularite")
+    Popularite.addEventListener('click', ()=>{
+        document.querySelector('section').remove();
+        displayMedia(photographers, mediaPhotographer);  
+    })
     // j'ai transformer ls query en tableau pour naviger entre les media 
     const Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
     lightbox.init(Links);
