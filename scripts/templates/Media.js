@@ -25,6 +25,9 @@ class MediaImage {
     getMediaCardDOM(){
         const clone = this.template("CardImageMedia");
 
+        const a = clone.querySelector('a');
+        a.setAttribute("href",this.title +'&' + this.picture);
+
         const img = clone.querySelector(".media-card-img");
         img.setAttribute("src", this.picture);
         img.setAttribute("alt", this.title);
@@ -59,6 +62,9 @@ class MediaVideo {
     }
     getMediaCardDOM(){
         const clone = this.template("CardVideoMedia");
+
+        const a = clone.querySelector('a');
+        a.setAttribute("href",this.title +'&' + this.picture);
 
         const img = clone.querySelector("img");
         img.setAttribute("src", this.vigetteVideo);

@@ -30,7 +30,20 @@
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
-		</div>
+		</div> 
+    
+    <template id="lightbox_modal">
+      <div class="lightbox">
+        <button class="lightbox_close"></button>
+        <button class="lightbox_next"></button>
+        <button class="lightbox_prev"></button>
+        <div class="lightbox_container">
+          <!-- <img /> ou <video/> -->
+          <!-- <p></p> -->
+        </div>
+      </div>
+    </template>
+    
     <template id="headerImage">
       <div class="container-image">
         <img/>
@@ -59,9 +72,11 @@
     </template>
     <template id="CardImageMedia">
       <article>
-        <div class="media-card-divImg">
-          <img class="media-card-img"/>
-        </div>
+        <a>
+          <div class="media-card-divImg">
+            <img class="media-card-img"/>
+          </div>
+        </a>
         <div class="TitleLike-media">
           <p></p>
           <div class="Likes-media">
@@ -73,10 +88,12 @@
     </template>
     <template id="CardVideoMedia">
       <article>
-        <div class="video-block">
-          <img/>
-          <video type="video/mp4" controls></video>
-        </div>
+        <a>
+          <div class="video-block">
+            <img/>
+            <video type="video/mp4" controls></video>
+          </div>
+        </a> 
         <div class="TitleLike-media">
           <p></p>
           <div class="Likes-media">
@@ -101,5 +118,6 @@
     <script src="scripts/templates/Media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

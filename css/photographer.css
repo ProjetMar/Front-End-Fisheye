@@ -77,3 +77,65 @@ form input {
     border: none;
     border-radius: 5px;
 }
+/* ligthbox */
+.lightbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    overflow: auto;
+   background-color: white;
+   z-index: 10;
+   overflow: auto;
+}
+.lightbox.fadOut{
+    opacity: 0;
+}
+.lightbox_next, .lightbox_prev{
+    border: none;
+    background: url(../assets/icons/flech.svg) center center / 100% 100%;
+    width: 48px;
+    height: 100%;
+    position:fixed; 
+     top: 0;
+     right: 20px;
+    margin-top: -14px;
+    z-index: 11; 
+    cursor: pointer;
+}
+.lightbox_prev{
+    right: auto;
+    left: 0;
+    transform: rotate(180deg);
+}
+.lightbox_close{
+    border: none;
+    background: url(../assets/icons/closeLig.svg) center center / 42px 42px no-repeat transparent;
+    width: 42px;
+    height: 42px;
+    position: fixed;
+    top: 20px;
+    right: 20px; 
+    z-index: 12;  
+    cursor: pointer;
+}
+.lightbox_container img{
+    max-width: 100%;
+    height: auto;
+}
+
+.lightbox_container{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   justify-content: center;
+    min-height: 100vh;
+    margin: 0 70px;
+}
+.lightbox_container p{
+    width: 100%;
+    color: rgba(144, 28, 28, 1);
+    font-size: 24px;
+}

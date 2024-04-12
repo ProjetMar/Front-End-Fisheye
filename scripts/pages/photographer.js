@@ -56,6 +56,7 @@ async function displayMedia(photographers, media){
     const tarifLikes = new TarifLikes(Tarif, SommeLike);
     const divLikesTarif = tarifLikes.getTarifLikes()
     mainDOM.appendChild(divLikesTarif); 
+
 }
 
 async function init() {
@@ -74,6 +75,11 @@ async function init() {
             video.pause();
         }
     }); 
+    // j'ai transformer ls query en tableau pour naviger entre les media 
+    const Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
+    lightbox.init(Links);
+    // const Lightbox = document.querySelector(".lightbox");
+    
 }
 
 init();
