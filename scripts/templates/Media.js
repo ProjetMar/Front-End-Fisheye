@@ -50,11 +50,13 @@ class MediaImage {
         }
     }
     likesModif(media,likesActuel){
-        
+         const SommeLikesElement = document.querySelector('.Somme-like p');
+         console.log(SommeLikesElement)
          document.querySelectorAll(".Likes-media p").forEach(element => {
             if(element.parentNode.parentNode.firstElementChild.textContent == media.title){
                 console.log(element)
                 element.textContent =parseInt (likesActuel) + 1
+                SommeLikesElement.textContent = parseInt(SommeLikesElement.textContent) + 1;
             }
             
         });
@@ -116,18 +118,20 @@ class MediaVideo {
         console.log(titreElement)
         
         let likesActuel = e.currentTarget.previousElementSibling.textContent;
-        
+
         if (mapTitreLikes.get(titreElement.textContent) == parseInt(likesActuel)){
             let media = this. mediaPhotographer.findIndex(media=> media.title == titreElement.textContent);
             this.likesModif(this.mediaPhotographer[media], likesActuel)
         }
     }
     likesModif(media,likesActuel){
-        
+         const SommeLikesElement = document.querySelector('.Somme-like p');
+         console.log(SommeLikesElement)
          document.querySelectorAll(".Likes-media p").forEach(element => {
             if(element.parentNode.parentNode.firstElementChild.textContent == media.title){
                 console.log(element)
-                element.textContent =parseInt (likesActuel) + 1
+                element.textContent =parseInt (likesActuel) + 1;
+                SommeLikesElement.textContent = parseInt(SommeLikesElement.textContent) + 1;
             }
             
         });
@@ -173,7 +177,7 @@ class TarifLikes{
 
         const pTarif = clone.querySelector('.tarifParJour');
         pTarif.textContent = `${this.tarif}€ / jour`;
-
+        
         return(clone)
     }
 
