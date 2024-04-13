@@ -41,7 +41,7 @@ async function displayMedia(photographers, mediaPhotographer){
     const namePhotographer = photographer.name;
    
     mediaPhotographer.forEach((ElementMediaPhotographer) => {
-        const mediaModel = new MediaFactory(ElementMediaPhotographer, namePhotographer);
+        const mediaModel = new MediaFactory(ElementMediaPhotographer, namePhotographer, mediaPhotographer);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         sectionMedia.appendChild(mediaCardDOM);
     })

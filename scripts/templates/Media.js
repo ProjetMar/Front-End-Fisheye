@@ -1,18 +1,20 @@
 class MediaFactory {
-    constructor(data, namePhotographer){
+    constructor(data, namePhotographer,  mediaPhotographer){
         if (Object.hasOwn(data, 'image')){
-            return new MediaImage (data, namePhotographer)
+            return new MediaImage (data, namePhotographer, mediaPhotographer)
         }else if((Object.hasOwn(data, 'video'))){
-            return new MediaVideo (data, namePhotographer)
+            return new MediaVideo (data, namePhotographer,  mediaPhotographer)
         }
     }
 }
 class MediaImage {
-    constructor(data, namePhotographer){
+    constructor(data, namePhotographer ,  mediaPhotographer, nbrLikes){
+        this. mediaPhotographer =  mediaPhotographer
         this.title = data.title;
         this.likes = data.likes;
         this.image = data.image;
-        this.namePhotographer = namePhotographer;  
+        this.namePhotographer = namePhotographer;
+        this.likesModif(mediaPhotographer, nbrLikes)  
     }
     get picture(){
         return `assets/images/${this.namePhotographer.split(' ')[0].replace('-',' ')}/${this.image}`
@@ -21,6 +23,41 @@ class MediaImage {
         const template = document.getElementById(idTemplate);
         const clone = document.importNode(template.content,true);
         return(clone)
+    }
+    plusLikes(e){
+        e.preventDefault();
+        // creer une map cle titre des media et valeur les likes 
+        let mapTitreLikes = new Map();
+        this.mediaPhotographer.forEach(element=>{
+            mapTitreLikes.set(element.title, element.likes)
+        });
+        console.log(mapTitreLikes)
+
+        //recuperer le titre de l'element liké <p>titre</p>
+        let titreElement = e.currentTarget.parentNode.parentNode.firstElementChild;
+        console.log(titreElement)
+        
+        //recuperer le nbre de likes de l'element cliqué en string exp'22'
+        let likesActuel = e.currentTarget.previousElementSibling.textContent;
+        
+        // verifier si le nombre de likes est le meme ou non (n'a pas ete modifier)
+        // l'utilisateur like une seul fois 
+        //recuperer le media qui a ete like par leur titre et applique
+        // la modification par la fonction likesModif
+        if (mapTitreLikes.get(titreElement.textContent) == parseInt(likesActuel)){
+            let media = this. mediaPhotographer.findIndex(media=> media.title == titreElement.textContent);
+            this.likesModif(this.mediaPhotographer[media], likesActuel)
+        }
+    }
+    likesModif(media,likesActuel){
+        
+         document.querySelectorAll(".Likes-media p").forEach(element => {
+            if(element.parentNode.parentNode.firstElementChild.textContent == media.title){
+                console.log(element)
+                element.textContent =parseInt (likesActuel) + 1
+            }
+            
+        });
     }
     getMediaCardDOM(){
         const clone = this.template("CardImageMedia");
@@ -38,16 +75,21 @@ class MediaImage {
         const pNumbreLike = clone.querySelector(".Likes-media").firstElementChild;
         pNumbreLike.textContent = this.likes;
 
+        clone.querySelector('span').addEventListener('click', this.plusLikes.bind(this))
         return(clone)
     }
 }
+// class MediaVideo/////////////
 
 class MediaVideo {
-    constructor(data, namePhotographer){
+    constructor(data, namePhotographer ,  mediaPhotographer, nbrLikes){
+        this. mediaPhotographer =  mediaPhotographer
         this.title = data.title;
         this.likes = data.likes;
         this.video = data.video;
         this.namePhotographer = namePhotographer;
+        // this.element = this.getMediaCardDOM;
+        this.likesModif(mediaPhotographer, nbrLikes)
     }
     get picture(){
         return `assets/images/${this.namePhotographer.split(' ')[0].replace('-',' ')}/${this.video}`
@@ -59,6 +101,36 @@ class MediaVideo {
         const template = document.getElementById(idTemplate);
         const clone = document.importNode(template.content,true);
         return(clone)
+    }
+    plusLikes(e){
+        e.preventDefault();
+
+        let mapTitreLikes = new Map();
+        this.mediaPhotographer.forEach(element=>{
+            mapTitreLikes.set(element.title, element.likes)
+        });
+        console.log(mapTitreLikes)
+
+        //recuperer le titre de l'element liké 
+        let titreElement = e.currentTarget.parentNode.parentNode.firstElementChild;
+        console.log(titreElement)
+        
+        let likesActuel = e.currentTarget.previousElementSibling.textContent;
+        
+        if (mapTitreLikes.get(titreElement.textContent) == parseInt(likesActuel)){
+            let media = this. mediaPhotographer.findIndex(media=> media.title == titreElement.textContent);
+            this.likesModif(this.mediaPhotographer[media], likesActuel)
+        }
+    }
+    likesModif(media,likesActuel){
+        
+         document.querySelectorAll(".Likes-media p").forEach(element => {
+            if(element.parentNode.parentNode.firstElementChild.textContent == media.title){
+                console.log(element)
+                element.textContent =parseInt (likesActuel) + 1
+            }
+            
+        });
     }
     getMediaCardDOM(){
         const clone = this.template("CardVideoMedia");
@@ -78,7 +150,8 @@ class MediaVideo {
 
         const pNumbreLike = clone.querySelector(".Likes-media p");
         pNumbreLike.textContent = this.likes;
-
+        
+        clone.querySelector('span').addEventListener('click', this.plusLikes.bind(this))
         return(clone)
     }
 }
