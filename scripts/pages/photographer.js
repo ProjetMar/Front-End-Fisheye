@@ -137,7 +137,11 @@ async function init() {
     const Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
     lightbox.init(Links);
     // const Lightbox = document.querySelector(".lightbox");
-    
+    //Modal contact 
+    const namePhotographer = document.querySelector(".photograph-header h2");
+    const contactMoi = document.querySelector("#contact_modal h2");
+    contactMoi.innerHTML=   `${contactMoi.textContent} </br> ${namePhotographer.textContent}` ;
+    // je veux aussi modifier le style de h2  contact
 }
 
 init();

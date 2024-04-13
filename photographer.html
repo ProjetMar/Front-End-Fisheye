@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
-  <body>
+  <body id="body">
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
@@ -16,7 +16,7 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal"aria-hidden="true" role="dialog">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
@@ -26,11 +26,17 @@
 					<div>
 						<label>Prénom</label>
 						<input />
+            <label>Nom</label>
+						<input />
+            <label>Email</label>
+						<input />
+            <label>Votre message</label>
+						<input />
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
-		</div> 
+		</div>
     
     <template id="lightbox_modal">
       <div class="lightbox">
