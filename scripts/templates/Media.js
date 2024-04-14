@@ -14,7 +14,14 @@ class MediaImage {
         this.likes = data.likes;
         this.image = data.image;
         this.namePhotographer = namePhotographer;
-        this.likesModif(mediaPhotographer, nbrLikes)  
+        this.likesModif(mediaPhotographer, nbrLikes) ;
+        if (window.localStorage.getItem(this.title) !== null) {
+            console.log(this.likes)
+            console.log(window.localStorage.getItem(this.title))
+            this.likes = window.localStorage.getItem(this.title);
+            console.log(this.likes)
+        }
+
     }
     get picture(){
         return `assets/images/${this.namePhotographer.split(' ')[0].replace('-',' ')}/${this.image}`
@@ -56,7 +63,9 @@ class MediaImage {
             if(element.parentNode.parentNode.firstElementChild.textContent == media.title){
                 console.log(element)
                 element.textContent =parseInt (likesActuel) + 1
+                window.localStorage.setItem(media.title , element.textContent);
                 SommeLikesElement.textContent = parseInt(SommeLikesElement.textContent) + 1;
+                window.localStorage.setItem(this.namePhotographer, SommeLikesElement.textContent);
             }
             
         });
@@ -91,7 +100,13 @@ class MediaVideo {
         this.video = data.video;
         this.namePhotographer = namePhotographer;
         // this.element = this.getMediaCardDOM;
-        this.likesModif(mediaPhotographer, nbrLikes)
+        this.likesModif(mediaPhotographer, nbrLikes);
+        if (window.localStorage.getItem(this.title) !== null) {
+            console.log(this.likes)
+            console.log(window.localStorage.getItem(this.title))
+            this.likes = window.localStorage.getItem(this.title);
+            console.log(this.likes)
+        }
     }
     get picture(){
         return `assets/images/${this.namePhotographer.split(' ')[0].replace('-',' ')}/${this.video}`
@@ -131,7 +146,9 @@ class MediaVideo {
             if(element.parentNode.parentNode.firstElementChild.textContent == media.title){
                 console.log(element)
                 element.textContent =parseInt (likesActuel) + 1;
+                window.localStorage.setItem(media.title, element.textContent);
                 SommeLikesElement.textContent = parseInt(SommeLikesElement.textContent) + 1;
+                window.localStorage.setItem(this.namePhotographer, SommeLikesElement.textContent);
             }
             
         });
@@ -160,9 +177,12 @@ class MediaVideo {
     }
 }
 class TarifLikes{
-    constructor(SommeLike, tarif){
+    constructor(SommeLike, tarif, namePhotographer){
         this.SommeLike = SommeLike;
         this.tarif = tarif;
+        if (window.localStorage.getItem(namePhotographer) !== null){
+            this.SommeLike = window.localStorage.getItem(namePhotographer)
+        }
     }
     template(idTemplate){
         const template = document.getElementById(idTemplate);

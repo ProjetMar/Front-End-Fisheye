@@ -53,7 +53,7 @@ async function displayMedia(photographers, mediaPhotographer){
         SommeLike+=media.likes;
     });
     console.log("la somme des likes est" + SommeLike);
-    const tarifLikes = new TarifLikes(Tarif, SommeLike);
+    const tarifLikes = new TarifLikes(Tarif, SommeLike, namePhotographer);
     const divLikesTarif = tarifLikes.getTarifLikes()
     mainDOM.appendChild(divLikesTarif); 
 
