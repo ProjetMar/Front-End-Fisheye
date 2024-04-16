@@ -103,6 +103,14 @@ h1 {
     text-decoration: none;
     text-align: center;
 }
+.photographer_section .container-image:hover{
+
+    box-shadow: 2px 2px 10px 2px #676767;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+} 
+.photographer_section article h2:hover{
+    text-shadow: 2px 2px 4px #676767; 
+}
 /* style pour la partie media card */
 .media-card-divImg{
     width: 350px;
@@ -113,6 +121,9 @@ h1 {
     height: 100%;
     border-radius: 5px;
     object-fit: cover;
+}
+.media-card-img:hover{
+    box-shadow: 2px 2px 10px 2px #676767;
 }
 section{
     display: flex;
@@ -125,6 +136,10 @@ section{
     display: inline-block;
     width: 350px;
     height: 300px;
+    border-radius: 5px;
+}
+.video-block:hover{
+    box-shadow: 2px 2px 10px 2px #676767;
 }
 .video-block img{
     width: 100%;
@@ -149,15 +164,26 @@ section{
 
 /* likes media et title */
 .TitleLike-media{
+    width: 350px;
     display: flex;
     justify-content: space-between;
     font-size: 24px;
     color: #901C1C;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.TitleLike-media p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px;
 }
 .Likes-media{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.Likes-media p{
+    margin-right: 7px;
 }
 .Likes-media span{
     cursor: pointer;
