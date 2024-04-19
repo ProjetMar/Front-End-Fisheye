@@ -40,6 +40,7 @@ class photographerTemplate {
         
         const lien = clone.querySelector( 'a' );
         lien.setAttribute("href", this.link);
+        lien.setAttribute("ARIA-label", `plus d'information sur ${this.name}`)
         
         const pC = clone.querySelector('.cartCity');
         pC.textContent = `${this.city}, ${this.country}`; 

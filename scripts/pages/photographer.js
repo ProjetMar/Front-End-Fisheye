@@ -31,7 +31,6 @@ async function displayData(photographers){
 }
 
 async function displayMedia(photographers, mediaPhotographer){
-
     const sectionMedia = document.createElement('section');
     const photographer = photographers.find((photographer) => photographer.id === parseInt(Id));
     sectionMedia.classList.add = "section-media";
@@ -56,6 +55,8 @@ async function displayMedia(photographers, mediaPhotographer){
     const tarifLikes = new TarifLikes(Tarif, SommeLike, namePhotographer);
     const divLikesTarif = tarifLikes.getTarifLikes()
     mainDOM.appendChild(divLikesTarif); 
+    let Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
+    lightbox.init(Links);
 
 }
 
@@ -79,64 +80,28 @@ async function init() {
             video.pause();
         }
     });
-    // gerer la liste de choix 
-    const Date = document.getElementById("Date");
-    Date.addEventListener('click', ()=>{
-        if (Date.getAttribute("aria-selected") == "true"){    
-            let mediasPhotographerTri = Array.from(mediaPhotographer);
-            mediasPhotographerTri.sort(function(a,b){
-                let JJa = a.date.split('-')[2];
-                let JJb = b.date.split('-')[2];
-                return (parseInt(JJa)-parseInt(JJb))
-            })
-            mediasPhotographerTri.sort(function(a,b){
-                let MMa = a.date.split('-')[1];
-                let MMb = b.date.split('-')[1];
-                return (parseInt(MMa)-parseInt(MMb))
-            })
-            mediasPhotographerTri.sort(function(a,b){
-                let AAAAa = a.date.split('-')[0];
-                let AAAAb = b.date.split('-')[0];
-                return(parseInt(AAAAa)- parseInt(AAAAb))
-            })
-        
-            console.log(mediasPhotographerTri)
-            document.querySelector('section').remove();
-           displayMedia(photographers, mediasPhotographerTri);
-        }
+    //gerer la liste de choix 
+    
+    const dateOption = document.getElementById("Date");
+    dateOption.addEventListener('click', (e)=>{       
+       tri(photographers, mediaPhotographer, e)    
     });
     const Titre = document.getElementById("Titre");
-    Titre.addEventListener('click', ()=>{
-        let mediasPhotographerTri = Array.from(mediaPhotographer);
-            mediasPhotographerTri.sort(function(a,b){
-                if (isNaN(b.title.substr(0,1)) == false){
-                     return (1)
-                }else if(isNaN(a.title.substr(0,1)) == false){
-                    return(-1)
-                }else{
-                    return(0)
-                }
-                //a.title.localeCompare(b.titre)
-            })
-            mediasPhotographerTri.sort(function(a,b){
-                if(isNaN(b.title.substr(0,1)) == true && isNaN(a.title.substr(0,1)) == true){
-                    return(a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
-                }
-            })
-
-        console.log(mediasPhotographerTri)
-        document.querySelector('section').remove();
-        displayMedia(photographers, mediasPhotographerTri);  
+    Titre.addEventListener('click', (e)=>{
+        console.log(e.currentTarget.id)
+       tri(photographers, mediaPhotographer, e) 
     });
     const Popularite = document.getElementById("Popularite")
-    Popularite.addEventListener('click', ()=>{
-        document.querySelector('section').remove();
-        displayMedia(photographers, mediaPhotographer);  
-    })
-    // j'ai transformer ls query en tableau pour naviger entre les media 
-    const Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
-    lightbox.init(Links);
-    // const Lightbox = document.querySelector(".lightbox");
+    Popularite.addEventListener('click', (e)=>{
+         tri(photographers, mediaPhotographer, e)
+    }) 
+    document.querySelectorAll('#sortOptions li').forEach(li=> li.addEventListener('keydown', (e)=>{
+        if(e.key == "Enter"){
+            console.log(e.currentTarget.id)
+            selectSortOption(e.currentTarget.id)
+            tri(photographers,mediaPhotographer, e)
+        }
+    }))
     //Modal contact 
     const namePhotographer = document.querySelector(".photograph-header h2");
     const contactMoi = document.querySelector("#contact_modal h2");

@@ -73,6 +73,7 @@ class MediaImage extends MediaPrincipale{
 
         const a = clone.querySelector('a');
         a.setAttribute("href",this.title +'&' + this.picture);
+        a.setAttribute("aria-label", `ouvrir le lightbox pour ${this.title}`)
 
         const img = clone.querySelector(".media-card-img");
         img.setAttribute("src", this.picture);
@@ -83,7 +84,8 @@ class MediaImage extends MediaPrincipale{
 
         const pNumbreLike = clone.querySelector(".Likes-media").firstElementChild;
         pNumbreLike.textContent = this.likes;
-
+        
+        clone.querySelector('span').setAttribute("aria-label", `liké ${this.title}`)
         clone.querySelector('span').addEventListener('click', this.plusLikes.bind(this))
         return(clone)
     }   
@@ -121,6 +123,7 @@ class MediaVideo extends MediaPrincipale{
         const pNumbreLike = clone.querySelector(".Likes-media p");
         pNumbreLike.textContent = this.likes;
         
+        clone.querySelector('span').setAttribute("aria-label", `liké ${this.title}`)
         clone.querySelector('span').addEventListener('click', this.plusLikes.bind(this))
         return(clone)
     }

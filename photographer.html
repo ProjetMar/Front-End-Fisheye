@@ -23,26 +23,49 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-            <label>Nom</label>
-						<input />
-            <label>Email</label>
-						<input />
-            <label>Votre message</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+					
+            <div class="formData"> 
+                <label for="first">
+                    Prénom
+                </label>
+                <br> 
+                <input class="text-control" type="text" id="first" name="first" minlength="2"/>
+                <br>
+            </div>
+            <div class="formData">
+                <label for="last">
+                    Nom
+                </label>
+                <br>
+                <input class="text-control" type="text" id="last" name="last"/>
+                <br>
+            </div>
+            <div class="formData">
+                <label for="email">
+                    E-mail
+                </label><br>
+                <input class="text-control" type="email" id="email" name="email"/>
+                <br>
+            </div>
+            <div>
+                <label for="message">
+                  Votre message
+                </label> 
+                <br>
+                <textarea class="text-control" type="text" id="message" name="message"></textarea>
+                <br>
+            </div>
+					
+          <button class="contact_button" type="submit">Envoyer</button>
 				</form>
 			</div>
 		</div>
     
     <template id="lightbox_modal">
       <div class="lightbox">
-        <button class="lightbox_close"></button>
-        <button class="lightbox_next"></button>
-        <button class="lightbox_prev"></button>
+        <button class="lightbox_close" aria-label="fermer lightbox"></button>
+        <button class="lightbox_next"  aria-label="media suivant"></button>
+        <button class="lightbox_prev" aria-label="media précedent"></button>
         <div class="lightbox_container">
           <!-- <img /> ou <video/> -->
           <!-- <p></p> -->
@@ -69,25 +92,12 @@
             <button id="sortButton" role="button" aria-haspopup="listbox" aria-expanded="false" onclick="toggleSortOptions()">Popularité</button>
             <span class="flech" onclick="toggleSortOptions()"><i class="fa-solid fa-chevron-down"></i></span>
             <ul id="sortOptions" role="listbox" aria-labelledby="inputLabel" tabindex="-1">
-                <li id="Popularite" role="option" aria-selected="true" onclick="selectSortOption('Popularite')">Popularité</li>
-                <li id="Date" role="option" aria-selected="false" onclick="selectSortOption('Date')">Date</li>
-                <li id="Titre" role="option" aria-selected="false" onclick="selectSortOption('Titre')">Titre</li>
+                <li id="Popularite" role="option" tabindex="0" aria-selected="true" onclick="selectSortOption('Popularite')">Popularité</li>
+                <li id="Date" role="option" tabindex="0" aria-selected="false" onclick="selectSortOption('Date')">Date</li>
+                <li id="Titre" role="option" tabindex="0" aria-selected="false" onclick="selectSortOption('Titre')">Titre</li>
             </ul>
         </div>
       </div>
-    </template>
-    <template id="cardMedia">
-      <article>
-        <a>
-        </a>
-        <div class="TitleLike-media">
-          <p></p>
-          <div class="Likes-media">
-            <p></p>
-            <span><i class="fa-solid fa-heart"></i></span>
-          </div>
-        </div>
-      </article>
     </template>
     <template id="CardImageMedia">
       <article>
@@ -100,7 +110,7 @@
           <p></p>
           <div class="Likes-media">
             <p></p>
-            <span><i class="fa-solid fa-heart"></i></span>
+            <span tabindex="0"><i class="fa-solid fa-heart"></i></span>
           </div>
         </div>
       </article>
@@ -117,7 +127,7 @@
           <p></p>
           <div class="Likes-media">
             <p></p>
-            <span><i class="fa-solid fa-heart"></i></span>
+            <span tabindex="0"><i class="fa-solid fa-heart"></i></span>
           </div>
         </div>
       </article>

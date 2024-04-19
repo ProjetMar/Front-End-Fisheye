@@ -1,3 +1,4 @@
+
 function getListeDOM(){
     const template = document.getElementById('templateListe');
     const clone = document.importNode(template.content,true);
@@ -55,3 +56,47 @@ function selectSortOption(optionId) {
     sortButton.setAttribute("aria-expanded", "false");
 }
 //fin de la fonction pour gerer la liste 
+// Fonction de comparaison personnalisée
+function customCompare(a, b) {
+    const titleA = a.title.toLowerCase();
+    const titleB = b.title.toLowerCase();
+  
+    // Vérifier si les deux titres commencent par des chiffres
+    const isNumA = !isNaN(titleA[0]);
+    const isNumB = !isNaN(titleB[0]);
+  
+    // Si les deux titres commencent par des chiffres, les trier par ordre numérique décroissant
+    if (isNumA && isNumB) {
+      return parseInt(b.title) - parseInt(a.title);
+    }
+  
+    // Si un des titres commence par un chiffre et l'autre par une lettre, placer le titre commençant par un chiffre avant
+    if (isNumA) {
+      return -1;
+    }
+    if (isNumB) {
+      return 1;
+    }
+  
+    // Si les deux titres commencent par des lettres, les trier par ordre alphabétique
+    return titleA.localeCompare(titleB);
+}
+function tri (photographers, mediaPhotographer, e){
+    let mediasPhotographerTri = Array.from(mediaPhotographer);
+    if(e.currentTarget.id == 'Titre'){
+         //trier les media
+        mediasPhotographerTri.sort(customCompare);  
+        console.log(mediasPhotographerTri)
+    }
+    if(e.currentTarget.id == 'Date'){
+        // de la plus recente 
+        mediasPhotographerTri.sort(function(a,b){
+            return(Date.parse(b.date)-Date.parse(a.date))
+        })
+        console.log(mediasPhotographerTri)
+    }
+    console.log(mediasPhotographerTri)
+    document.querySelector('section').remove();
+    displayMedia(photographers, mediasPhotographerTri); 
+
+}
