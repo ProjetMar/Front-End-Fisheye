@@ -36,7 +36,6 @@ async function displayMedia(photographers, mediaPhotographer){
     sectionMedia.classList.add = "section-media";
 
     mainDOM.appendChild(sectionMedia);
-    // const mediaPhotographer = media.filter((medias)=>medias.photographerId === parseInt(Id));
     const namePhotographer = photographer.name;
    
     mediaPhotographer.forEach((ElementMediaPhotographer) => {
@@ -46,15 +45,10 @@ async function displayMedia(photographers, mediaPhotographer){
     })
     //affichage de Tarif et somme likes
     const Tarif = photographer.price;
-    let SommeLike = 0;
-    mediaPhotographer.forEach((media)=>
-    {
-        SommeLike+=media.likes;
-    });
-    console.log("la somme des likes est" + SommeLike);
-    const tarifLikes = new TarifLikes(Tarif, SommeLike, namePhotographer);
+    const tarifLikes = new TarifLikes(mediaPhotographer, Tarif, namePhotographer);
     const divLikesTarif = tarifLikes.getTarifLikes()
     mainDOM.appendChild(divLikesTarif); 
+    //actualiser la liste des links et afficher les lightbox
     let Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
     lightbox.init(Links);
 
@@ -66,6 +60,7 @@ async function init() {
     displayData(photographers);
     const { media } = await getPhotographers();
     const mediaPhotographer = media.filter((medias)=>medias.photographerId === parseInt(Id));
+    //liste par defaut afficher trier par ordre popularité 
     mediaPhotographer.sort(function(a,b){
         return(b.likes - a.likes)
     });

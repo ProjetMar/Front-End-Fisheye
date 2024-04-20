@@ -274,3 +274,9 @@ li, #sortButton{
     display: flex;
     align-items: center;
 }
+button:hover{
+    box-shadow: 2px 2px 10px 2px #676767;
+}
+section i:hover{
+    color: #D3573C;
+}

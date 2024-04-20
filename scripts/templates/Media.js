@@ -129,12 +129,21 @@ class MediaVideo extends MediaPrincipale{
     }
 }
 class TarifLikes{
-    constructor(SommeLike, tarif, namePhotographer){
-        this.SommeLike = SommeLike;
+    constructor(mediaPhotographer, tarif, namePhotographer){
+        this.mediaPhotographer=mediaPhotographer;
+        this.SommeLike = this.sommeLike;
         this.tarif = tarif;
         if (window.localStorage.getItem(namePhotographer) !== null){
             this.SommeLike = window.localStorage.getItem(namePhotographer)
         }
+    }
+    get sommeLike(){
+        let Somme = 0
+        this.mediaPhotographer.forEach((media)=>
+        {
+             Somme+=media.likes;
+        });
+        return(Somme)
     }
     template(idTemplate){
         const template = document.getElementById(idTemplate);
