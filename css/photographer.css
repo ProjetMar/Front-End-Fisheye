@@ -168,7 +168,8 @@ form textarea{
    height: 640px;
    max-width: 1020px;
     /* min-height: 100vh; */
-    margin: 0 70px;
+    /* margin: 0 70px; */
+    margin: auto;
 }
 .lightbox_container p{
     width: 100%;

@@ -89,12 +89,12 @@
       <div class="section-liste">
         <label id="inputLabel" for="sortOptions">Trier par  </label>
         <div class="block-liste">
-            <button id="sortButton" role="button" aria-haspopup="listbox" aria-expanded="false" onclick="toggleSortOptions()">Popularité</button>
+            <button id="sortButton" role="button" aria-label="liste d'options de tri" aria-haspopup="listbox" aria-expanded="false" onclick="toggleSortOptions()">Popularité</button>
             <span class="flech" onclick="toggleSortOptions()"><i class="fa-solid fa-chevron-down"></i></span>
             <ul id="sortOptions" role="listbox" aria-labelledby="inputLabel" tabindex="-1">
-                <li id="Popularite" role="option" tabindex="0" aria-selected="true" onclick="selectSortOption('Popularite')">Popularité</li>
-                <li id="Date" role="option" tabindex="0" aria-selected="false" onclick="selectSortOption('Date')">Date</li>
-                <li id="Titre" role="option" tabindex="0" aria-selected="false" onclick="selectSortOption('Titre')">Titre</li>
+                <li id="Popularite" role="option" aria-label="trier par Popularite" tabindex="0" aria-selected="true" onclick="selectSortOption('Popularite')">Popularité</li>
+                <li id="Date" role="option" tabindex="0" aria-label="trier par date" aria-selected="false" onclick="selectSortOption('Date')">Date</li>
+                <li id="Titre" role="option" aria-label="trier par titre" tabindex="0" aria-selected="false" onclick="selectSortOption('Titre')">Titre</li>
             </ul>
         </div>
       </div>
@@ -142,11 +142,11 @@
       </div>
     </template>
     <script src="https://kit.fontawesome.com/a3afe4fc65.js" crossorigin="anonymous"></script>
-    <script src="scripts/templates/liste.js"></script>
-    <script src="scripts/templates/photographer.js"></script>
-    <script src="scripts/templates/Media.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/lightbox.js"></script>
+    <script src="scripts/templates/liste.js" type="module"></script>
+    <script src="scripts/templates/photographer.js" type="module"></script>
+    <script src="scripts/templates/Media.js" type="module"></script>
+    <script src="/scripts/pages/photographer.js" type="module"></script>
+    <script src="/scripts/utils/contactForm.js" type="module"></script>
+    <script src="/scripts/utils/lightbox.js" type="module"></script>
   </body>
 </html>

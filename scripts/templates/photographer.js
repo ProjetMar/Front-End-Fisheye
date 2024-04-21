@@ -21,14 +21,6 @@ class photographerTemplate {
     }
 
     getUserCardDOM() {
-        // const article = document.createElement( 'article' );
-        // const img = document.createElement( 'img' );
-        // img.setAttribute("src", picture)
-        // const h2 = document.createElement( 'h2' );
-        // h2.textContent = name;
-        // article.appendChild(img);
-        // article.appendChild(h2);
-        // return (article);
         let clone = this.template('templatePhotographer');
 
         const img = clone.querySelector('img');
@@ -38,18 +30,18 @@ class photographerTemplate {
         const h2 = clone.querySelector('h2');
         h2.textContent = this.name;
         
-        const lien = clone.querySelector( 'a' );
-        lien.setAttribute("href", this.link);
-        lien.setAttribute("ARIA-label", `plus d'information sur ${this.name}`)
+        const linkElement = clone.querySelector( 'a' );
+        linkElement.setAttribute("href", this.link);
+        linkElement.setAttribute("ARIA-label", `plus d'information sur ${this.name}`)
         
-        const pC = clone.querySelector('.cartCity');
-        pC.textContent = `${this.city}, ${this.country}`; 
+        const cartCity = clone.querySelector('.cartCity');
+        cartCity.textContent = `${this.city}, ${this.country}`; 
 
-        const pT = clone.querySelector('.cartTagline');
-        pT.textContent = this.tagline;
+        const cartTagLine = clone.querySelector('.cartTagline');
+        cartTagLine.textContent = this.tagline;
 
-        const pP = clone.querySelector('.cartPrice');
-        pP.textContent = `${this.price}€/jour`;
+        const cartPrice = clone.querySelector('.cartPrice');
+        cartPrice.textContent = `${this.price}€/jour`;
 
         return(clone)
     }
@@ -58,7 +50,6 @@ class photographerTemplate {
         let clone = this.template('headerImage');
 
         const img = clone.querySelector('img');
-
         img.setAttribute("src", this.picture);
         img.setAttribute("alt", this.name);
 
@@ -71,13 +62,14 @@ class photographerTemplate {
         const h2 = clone.querySelector('h2');
         h2.textContent = this.name;
         
-        const pC = clone.querySelector('.cartCity');
-        pC.textContent = `${this.city}, ${this.country}`; 
+        const cartCity = clone.querySelector('.cartCity');
+        cartCity.textContent = `${this.city}, ${this.country}`; 
 
-        const pT = clone.querySelector('.cartTagline');
-        pT.textContent = this.tagline;
+        const cartTagline = clone.querySelector('.cartTagline');
+        cartTagline.textContent = this.tagline;
 
         return(clone)
     }
     
 }
+export {photographerTemplate}

@@ -7,14 +7,13 @@ class MediaFactory {
         }
     }
 }
+
 class MediaPrincipale{
     constructor(data, namePhotographer ,  mediaPhotographer, nbrLikes){
         this. mediaPhotographer =  mediaPhotographer
         this.title = data.title;
         this.likes = data.likes;
-        // this.video = data.video;
         this.namePhotographer = namePhotographer;
-        // this.element = this.getMediaCardDOM;
         this.likesModif(mediaPhotographer, nbrLikes);
         if (window.localStorage.getItem(this.title) !== null) {
             console.log(this.likes)
@@ -48,7 +47,6 @@ class MediaPrincipale{
     }
     likesModif(media,likesActuel){
         const SommeLikesElement = document.querySelector('.Somme-like p');
-        console.log(SommeLikesElement)
         document.querySelectorAll(".Likes-media p").forEach(element => {
             if(element.parentNode.parentNode.firstElementChild.textContent == media.title){
                 console.log(element)
@@ -162,3 +160,4 @@ class TarifLikes{
         return(clone)
     }
 }
+export{ TarifLikes, MediaFactory}

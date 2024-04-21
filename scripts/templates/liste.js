@@ -1,4 +1,5 @@
 
+import { displayMedia } from "../pages/photographer";
 function getListeDOM(){
     const template = document.getElementById('templateListe');
     const clone = document.importNode(template.content,true);
@@ -100,3 +101,4 @@ function tri (photographers, mediaPhotographer, e){
     displayMedia(photographers, mediasPhotographerTri); 
 
 }
+export{ getListeDOM, selectSortOption, tri}

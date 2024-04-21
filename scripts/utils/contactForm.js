@@ -1,4 +1,5 @@
 
+import { Id } from "../pages/photographer";
 console.log(Id);
 
 const h2 = document.querySelector("#contact_modal h2");
@@ -8,8 +9,6 @@ console.log(h2);
 const modal = document.getElementById("contact_modal");
 const main = document.getElementById("main");
 const body = document.getElementById("body");
-const modalCloseBtn = document.querySelector(".contact_button");
-const modalOpenBtn = document.querySelector(".contact_button");
 // // Fonction pour activer/désactiver la navigation sur tous les éléments de la page
 // function togglePageTabbing(enableTabbing) {
 //     const pageElements = document.querySelectorAll("body > *:not(#modal)");

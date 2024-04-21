@@ -1,32 +1,38 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node" : true
     },
     "extends": "eslint:recommended",
     "plugins": ["@html-eslint"],
-    "overrides": [
-        // {
-        //     "env": {
-        //         "node": true
-        //     },
-        //     "files": [
-        //         ".eslintrc.{js,cjs}"
-        //     ],
-        //     "parserOptions": {
-        //         "sourceType": "script"
-        //     }
-        // }
-        {
-            file: ["*.html"],
-            parser: "@html-eslint/parser",
-            extends: ["plugin:@html-eslint/recommended"],
-        }
-    ],
+    // "overrides": [
+    //     // {
+    //     //     "env": {
+    //     //         "node": true
+    //     //     },
+    //     //     "files": [
+    //     //         ".eslintrc.{js,cjs}"
+    //     //     ],
+    //     //     "parserOptions": {
+    //     //         "sourceType": "script"
+    //     //     }
+    //     // }
+    //     {
+    //         file: ["*.html"],
+    //         parser: "@html-eslint/parser",
+    //         extends: ["plugin:@html-eslint/recommended"],
+    //     }
+    // ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "rules": {
-    }
+        "no-unused-vars": ["error", { "varsIgnorePattern": "_onclick" }]
+    },
+    "globals": {
+        window: true,
+        module: true
+      }
 }

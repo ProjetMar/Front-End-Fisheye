@@ -1,5 +1,9 @@
 //Mettre le code JavaScript lié à la page photographer.html
 //récupération de l'id du produit ajouté dans l'url 
+import { Lightbox } from "../utils/lightbox";
+import { TarifLikes, MediaFactory } from "../templates/Media";
+import { getListeDOM, selectSortOption, tri } from "../templates/liste";
+import { photographerTemplate } from "../templates/photographer";
 let paramsString = window.location.search;
 let searchParams = new URLSearchParams (paramsString);
 const Id = searchParams.get ("id");
@@ -50,7 +54,7 @@ async function displayMedia(photographers, mediaPhotographer){
     mainDOM.appendChild(divLikesTarif); 
     //actualiser la liste des links et afficher les lightbox
     let Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
-    lightbox.init(Links);
+    Lightbox.init(Links);
 
 }
 
@@ -103,5 +107,5 @@ async function init() {
     contactMoi.innerHTML=   `${contactMoi.textContent} </br> ${namePhotographer.textContent}` ;
     // je veux aussi modifier le style de h2  contact
 }
-
+export {displayMedia, Id}
 init();
