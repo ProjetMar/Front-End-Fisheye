@@ -131,9 +131,9 @@ form textarea{
     border: none;
     background: url(../assets/icons/flech.svg) center center / 100% 100%;
     width: 48px;
-    height: 100%;
+    height: 50%;
     position:fixed; 
-     top: 0;
+     top: 25%;
      right: 20px;
     margin-top: -14px;
     z-index: 11; 
@@ -152,7 +152,7 @@ form textarea{
     position: fixed;
     top: 20px;
     right: 20px; 
-    z-index: 12;  
+    z-index: 11;  
     cursor: pointer;
 }
 .lightbox_container img, video{

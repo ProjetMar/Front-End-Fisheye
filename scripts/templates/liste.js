@@ -59,30 +59,3 @@ function selectSortOption(optionId) {
     document.querySelector('.flech').innerHTML = `<i class="fa-solid fa-chevron-down"></i>`;
     sortButton.setAttribute("aria-expanded", "false");
 }
-//fin de la fonction pour gerer la liste 
-
-/*global displayMedia*/
-/*eslint no-undef: "error"*/
-// eslint-disable-next-line no-unused-vars
-function tri (photographers, mediaPhotographer, e){
-    let mediasPhotographerTri = Array.from(mediaPhotographer);
-    if(e.currentTarget.id == 'Titre'){
-         //trier les media
-        mediasPhotographerTri.sort(function(a,b){
-            return(a.title.localeCompare(b.title))
-        });  
-        console.log(mediasPhotographerTri)
-    }
-    if(e.currentTarget.id == 'Date'){
-        // de la plus recente 
-        mediasPhotographerTri.sort(function(a,b){
-            return(Date.parse(b.date)-Date.parse(a.date))
-        })
-        console.log(mediasPhotographerTri)
-    }
-    console.log(mediasPhotographerTri)
-    document.querySelector('section').remove();
-    displayMedia(photographers, mediasPhotographerTri); 
-
-}
-// export{ getListeDOM, selectSortOption, tri}

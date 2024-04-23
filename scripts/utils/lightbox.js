@@ -26,7 +26,7 @@ class Lightbox{
           if (!lightbox.contains(document.activeElement)) {
             event.preventDefault();
             //ajout focus à la premier input du modal
-            document.querySelector('.lightbox_next').focus();
+            document.querySelector('.lightbox_close').focus();
           }
         }
       
