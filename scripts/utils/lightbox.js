@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line no-unused-vars
 class Lightbox{
     static init(Links){
         const gallery = Links.map(link=>link.getAttribute('href'));
@@ -16,6 +17,19 @@ class Lightbox{
        document.body.appendChild(this.element);
        document.addEventListener('keyup', this.onekeyUp);
        this.element = document.querySelector('.lightbox');
+    }
+    preventOutsideNavigation(event) {
+        const lightbox = document.querySelector('.lightbox');
+        // Vérifier si la touche "Tab" est pressée
+        if (event.key === "Tab") {
+          // Empêcher le déplacement du focus en dehors du modal
+          if (!lightbox.contains(document.activeElement)) {
+            event.preventDefault();
+            //ajout focus à la premier input du modal
+            document.querySelector('.lightbox_next').focus();
+          }
+        }
+      
     }
     onekeyUp (e){
         if(e.key == 'Escape'){
@@ -37,6 +51,7 @@ class Lightbox{
         document.removeEventListener('keyup', this.onekeyUp)
         // main.setAttribute("aria-hidden",'false');
         // document.querySelector('.lightbox').setAttribute("aria-hidden",'true');
+        document.removeEventListener("keydown", this.preventOutsideNavigation); 
     }
     next(e){
         e.preventDefault(e);
@@ -78,6 +93,7 @@ class Lightbox{
         container.appendChild(p);
         // il faut connaitre l'url qui est chargé donc on doit la conserver pour l'utiliser au moment 
         //clique sur suivant ou precedent 
+        document.addEventListener("keydown", this.preventOutsideNavigation);
         this.url = url;
     }
     buildDOM(){
@@ -94,5 +110,5 @@ class Lightbox{
         
     }
 }
-export {Lightbox}
+// export {Lightbox}
 //  lightbox.init()

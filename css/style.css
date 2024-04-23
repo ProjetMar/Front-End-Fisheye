@@ -277,6 +277,10 @@ li, #sortButton{
 button:hover{
     box-shadow: 2px 2px 10px 2px #676767;
 }
+.lightbox button:hover{
+    box-shadow: none;
+    opacity: 0.5;
+}
 section i:hover{
     color: #D3573C;
 }

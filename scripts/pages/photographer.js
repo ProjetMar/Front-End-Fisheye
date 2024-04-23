@@ -1,9 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
 //récupération de l'id du produit ajouté dans l'url 
-import { Lightbox } from "../utils/lightbox";
-import { TarifLikes, MediaFactory } from "../templates/Media";
-import { getListeDOM, selectSortOption, tri } from "../templates/liste";
-import { photographerTemplate } from "../templates/photographer";
 let paramsString = window.location.search;
 let searchParams = new URLSearchParams (paramsString);
 const Id = searchParams.get ("id");
@@ -17,6 +13,8 @@ async function getPhotographers() {
 const mainDOM = document.getElementById("main"); 
 
 //afficher la liste 
+/*global getListeDOM, photographerTemplate, MediaFactory, TarifAndLikesInsert, Lightbox, selectSortOption, tri*/
+/*eslint no-undef: "error"*/
 let sectionListeDOM = getListeDOM();
 mainDOM.appendChild(sectionListeDOM);
 
@@ -49,8 +47,8 @@ async function displayMedia(photographers, mediaPhotographer){
     })
     //affichage de Tarif et somme likes
     const Tarif = photographer.price;
-    const tarifLikes = new TarifLikes(mediaPhotographer, Tarif, namePhotographer);
-    const divLikesTarif = tarifLikes.getTarifLikes()
+    const tarifAndLikesInsert = new TarifAndLikesInsert(mediaPhotographer, Tarif, namePhotographer);
+    const divLikesTarif = tarifAndLikesInsert.getInsertCardDom()
     mainDOM.appendChild(divLikesTarif); 
     //actualiser la liste des links et afficher les lightbox
     let Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
@@ -107,5 +105,5 @@ async function init() {
     contactMoi.innerHTML=   `${contactMoi.textContent} </br> ${namePhotographer.textContent}` ;
     // je veux aussi modifier le style de h2  contact
 }
-export {displayMedia, Id}
+// export {displayMedia, Id}
 init();

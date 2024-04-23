@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,18 +9,20 @@
   </head>
   <body id="body">
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="logo de fisheye _ Page d'accueil" />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
-    <div id="contact_modal"aria-hidden="true" role="dialog">
+    <div id="contact_modal" aria-hidden="true" role="dialog">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="fermer la modal" onclick="closeModal()" />
         </header>
 				<form>
 					
@@ -52,7 +54,7 @@
                   Votre message
                 </label> 
                 <br>
-                <textarea class="text-control" type="text" id="message" name="message"></textarea>
+                <textarea class="text-control" id="message" name="message"></textarea>
                 <br>
             </div>
 					
@@ -63,7 +65,7 @@
     
     <template id="lightbox_modal">
       <div class="lightbox">
-        <button class="lightbox_close" aria-label="fermer lightbox"></button>
+        <button class="lightbox_close" tabindex="1" aria-label="fermer lightbox"></button>
         <button class="lightbox_next"  aria-label="media suivant"></button>
         <button class="lightbox_prev" aria-label="media précedent"></button>
         <div class="lightbox_container">
@@ -75,7 +77,7 @@
     
     <template id="headerImage">
       <div class="container-image">
-        <img/>
+        <img alt=""/>
       </div>
     </template>
     <template id="photographerInfo">
@@ -90,7 +92,7 @@
         <label id="inputLabel" for="sortOptions">Trier par  </label>
         <div class="block-liste">
             <button id="sortButton" role="button" aria-label="liste d'options de tri" aria-haspopup="listbox" aria-expanded="false" onclick="toggleSortOptions()">Popularité</button>
-            <span class="flech" onclick="toggleSortOptions()"><i class="fa-solid fa-chevron-down"></i></span>
+            <span class="flech" onclick="toggleSortOptions()"><i aria-hidden="true" class="fa-solid fa-chevron-down"></i></span>
             <ul id="sortOptions" role="listbox" aria-labelledby="inputLabel" tabindex="-1">
                 <li id="Popularite" role="option" aria-label="trier par Popularite" tabindex="0" aria-selected="true" onclick="selectSortOption('Popularite')">Popularité</li>
                 <li id="Date" role="option" tabindex="0" aria-label="trier par date" aria-selected="false" onclick="selectSortOption('Date')">Date</li>
@@ -103,14 +105,14 @@
       <article>
         <a>
           <div class="media-card-divImg">
-            <img class="media-card-img"/>
+            <img alt="" class="media-card-img"/>
           </div>
         </a>
         <div class="TitleLike-media">
           <p></p>
           <div class="Likes-media">
             <p></p>
-            <span tabindex="0"><i class="fa-solid fa-heart"></i></span>
+            <span tabindex="0"><i aria-hidden="true" class="fa-solid fa-heart"></i></span>
           </div>
         </div>
       </article>
@@ -119,7 +121,7 @@
       <article>
         <a>
           <div class="video-block">
-            <img/>
+            <img alt=""/>
             <video type="video/mp4" controls></video>
           </div>
         </a> 
@@ -127,7 +129,7 @@
           <p></p>
           <div class="Likes-media">
             <p></p>
-            <span tabindex="0"><i class="fa-solid fa-heart"></i></span>
+            <span tabindex="0"><i aria-hidden="true" class="fa-solid fa-heart"></i></span>
           </div>
         </div>
       </article>
@@ -136,17 +138,17 @@
       <div class="Block-tarif">
         <div class="Somme-like">
           <p></p>
-          <span><i class="fa-solid fa-heart"></i></span>
+          <span><i aria-hidden="true" class="fa-solid fa-heart"></i></span>
         </div>
         <p class="tarifParJour"></p>
       </div>
     </template>
     <script src="https://kit.fontawesome.com/a3afe4fc65.js" crossorigin="anonymous"></script>
-    <script src="scripts/templates/liste.js" type="module"></script>
-    <script src="scripts/templates/photographer.js" type="module"></script>
-    <script src="scripts/templates/Media.js" type="module"></script>
-    <script src="/scripts/pages/photographer.js" type="module"></script>
-    <script src="/scripts/utils/contactForm.js" type="module"></script>
-    <script src="/scripts/utils/lightbox.js" type="module"></script>
+    <script src="scripts/templates/liste.js"  ></script>
+    <script src="scripts/templates/photographer.js"  ></script>
+    <script src="scripts/templates/Media.js"   ></script>
+    <script src="/scripts/pages/photographer.js"  ></script>
+    <script src="/scripts/utils/contactForm.js" ></script>
+    <script src="/scripts/utils/lightbox.js" ></script>
   </body>
 </html>

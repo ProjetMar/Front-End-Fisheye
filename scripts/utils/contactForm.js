@@ -1,5 +1,6 @@
 
-import { Id } from "../pages/photographer";
+/*global Id */
+/*eslint no-undef: "error"*/
 console.log(Id);
 
 const h2 = document.querySelector("#contact_modal h2");
@@ -20,7 +21,8 @@ const body = document.getElementById("body");
 //       }
 //     });
 //   }
-  
+
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
     main.setAttribute("aria-hidden",'true');
     modal.setAttribute("aria-hidden", 'false');
@@ -56,7 +58,7 @@ function preventOutsideNavigation(event) {
     if (event.key === "Escape") {
       closeModal(); // Fermer la modal si la touche "Escape" est pressée
     }
-  }
+}
 //ajouter echap
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {

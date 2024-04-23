@@ -1,4 +1,6 @@
-   import { photographerTemplate } from "../templates/photographer";
+//    import { photographerTemplate } from "../templates/photographer";
+/*global photographerTemplate*/
+/*eslint no-undef: "error"*/
    async function getPhotographers() {
         const reponse = await fetch ("./data/photographers.json");
         const photographers = await reponse.json();

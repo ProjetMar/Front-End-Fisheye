@@ -1,12 +1,14 @@
 
-import { displayMedia } from "../pages/photographer";
+// eslint-disable-next-line no-unused-vars
 function getListeDOM(){
     const template = document.getElementById('templateListe');
     const clone = document.importNode(template.content,true);
     return(clone)
 }
 
-//gerer la liste 
+
+//gerer la liste
+// eslint-disable-next-line no-unused-vars
 function toggleSortOptions() {
     let sortButton = document.getElementById("sortButton");
     let sortOptions = document.getElementById("sortOptions");
@@ -25,6 +27,7 @@ function toggleSortOptions() {
     }
 }
 
+// eslint-disable-next-line no-unused-vars
 function selectSortOption(optionId) {
     let sortOptions = document.getElementById("sortOptions");
     let selectedOption = document.getElementById(optionId);
@@ -57,36 +60,17 @@ function selectSortOption(optionId) {
     sortButton.setAttribute("aria-expanded", "false");
 }
 //fin de la fonction pour gerer la liste 
-// Fonction de comparaison personnalisée
-function customCompare(a, b) {
-    const titleA = a.title.toLowerCase();
-    const titleB = b.title.toLowerCase();
-  
-    // Vérifier si les deux titres commencent par des chiffres
-    const isNumA = !isNaN(titleA[0]);
-    const isNumB = !isNaN(titleB[0]);
-  
-    // Si les deux titres commencent par des chiffres, les trier par ordre numérique décroissant
-    if (isNumA && isNumB) {
-      return parseInt(b.title) - parseInt(a.title);
-    }
-  
-    // Si un des titres commence par un chiffre et l'autre par une lettre, placer le titre commençant par un chiffre avant
-    if (isNumA) {
-      return -1;
-    }
-    if (isNumB) {
-      return 1;
-    }
-  
-    // Si les deux titres commencent par des lettres, les trier par ordre alphabétique
-    return titleA.localeCompare(titleB);
-}
+
+/*global displayMedia*/
+/*eslint no-undef: "error"*/
+// eslint-disable-next-line no-unused-vars
 function tri (photographers, mediaPhotographer, e){
     let mediasPhotographerTri = Array.from(mediaPhotographer);
     if(e.currentTarget.id == 'Titre'){
          //trier les media
-        mediasPhotographerTri.sort(customCompare);  
+        mediasPhotographerTri.sort(function(a,b){
+            return(a.title.localeCompare(b.title))
+        });  
         console.log(mediasPhotographerTri)
     }
     if(e.currentTarget.id == 'Date'){
@@ -101,4 +85,4 @@ function tri (photographers, mediaPhotographer, e){
     displayMedia(photographers, mediasPhotographerTri); 
 
 }
-export{ getListeDOM, selectSortOption, tri}
+// export{ getListeDOM, selectSortOption, tri}

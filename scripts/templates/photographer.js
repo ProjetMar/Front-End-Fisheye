@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 class photographerTemplate {
     constructor(data){
         this.portrait = data.portrait; 
@@ -72,4 +73,4 @@ class photographerTemplate {
     }
     
 }
-export {photographerTemplate}
+// export {photographerTemplate}
