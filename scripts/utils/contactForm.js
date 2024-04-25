@@ -10,17 +10,6 @@ console.log(h2);
 const modal = document.getElementById("contact_modal");
 const main = document.getElementById("main");
 const body = document.getElementById("body");
-// // Fonction pour activer/désactiver la navigation sur tous les éléments de la page
-// function togglePageTabbing(enableTabbing) {
-//     const pageElements = document.querySelectorAll("body > *:not(#modal)");
-//     pageElements.forEach(element => {
-//       if (enableTabbing) {
-//         element.removeAttribute("tabindex");
-//       } else {
-//         element.setAttribute("tabindex", "-1");
-//       }
-//     });
-//   }
 
 // eslint-disable-next-line no-unused-vars
 function displayModal() {

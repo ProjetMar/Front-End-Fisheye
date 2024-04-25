@@ -4,7 +4,8 @@ module.exports = {
         "es2021": true
     },
     "extends": "eslint:recommended",
-    "plugins": ["@html-eslint"],
+    "plugins": ["html"],
+    //"plugins": ["@html-eslint"],
     /* "overrides": [
         // {
         //     "env": {

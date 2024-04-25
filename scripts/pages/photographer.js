@@ -1,4 +1,3 @@
-//Mettre le code JavaScript lié à la page photographer.html
 //récupération de l'id du produit ajouté dans l'url 
 let paramsString = window.location.search;
 let searchParams = new URLSearchParams (paramsString);
@@ -13,6 +12,8 @@ async function getPhotographers() {
 
 const mainDOM = document.getElementById("main");
 
+/*global  getListeDOM, photographerTemplate, MediaFactory, TarifAndLikesInsert, Lightbox, selectSortOption*/
+/*eslint no-undef: "error"*/
 // eslint-disable-next-line no-unused-vars
 class PhotographerPage
 {
@@ -61,10 +62,12 @@ class PhotographerPage
         const Tarif = this.photographer.price;
         const tarifAndLikesInsert = new TarifAndLikesInsert(mediaPhotographer, Tarif, namePhotographer);
         const divLikesTarif = tarifAndLikesInsert.getInsertCardDom()
-        mainDOM.appendChild(divLikesTarif); 
+        mainDOM.appendChild(divLikesTarif);
+
         //actualiser la liste des links et afficher les lightbox
         let Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
         Lightbox.init(Links);
+        
     }
 
     displayData(){
@@ -81,33 +84,8 @@ class PhotographerPage
     }
 }
 
-/*global getListeDOM, photographerTemplate, MediaFactory, TarifAndLikesInsert, Lightbox, selectSortOption, tri*/
-/*eslint no-undef: "error"*/
 let sectionListeDOM = getListeDOM();
 mainDOM.appendChild(sectionListeDOM);
-
-    const sectionMedia = document.createElement('section');
-    const photographer = photographers.find((photographer) => photographer.id === parseInt(Id));
-    sectionMedia.classList.add = "section-media";
-
-    mainDOM.appendChild(sectionMedia);
-    const namePhotographer = photographer.name;
-   
-    mediaPhotographer.forEach((ElementMediaPhotographer) => {
-        const mediaModel = new MediaFactory(ElementMediaPhotographer, namePhotographer, mediaPhotographer);
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        sectionMedia.appendChild(mediaCardDOM);
-    })
-    //affichage de Tarif et somme likes
-    const Tarif = photographer.price;
-    const tarifAndLikesInsert = new TarifAndLikesInsert(mediaPhotographer, Tarif, namePhotographer);
-    const divLikesTarif = tarifAndLikesInsert.getInsertCardDom()
-    mainDOM.appendChild(divLikesTarif); 
-    //actualiser la liste des links et afficher les lightbox
-    let Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));
-    Lightbox.init(Links);
-
-}*/
 
 async function init() {
     // Récupère les datas des photographes
@@ -118,7 +96,6 @@ async function init() {
     const phptographerPage  = new PhotographerPage(photographer, mediaPhotographer);
     phptographerPage.displayData();
     phptographerPage.sortMedia();
-
 
     let videoBlock = document.querySelector('.video-block');
     console.log(videoBlock);
@@ -152,5 +129,6 @@ async function init() {
     contactMoi.innerHTML=   `${contactMoi.textContent} </br> ${namePhotographer.textContent}` ;
     // je veux aussi modifier le style de h2  contact
 }
+// export {displayMedia, Id}
 // eslint-disable-next-line no-unused-vars
 init();

@@ -3,8 +3,7 @@
 class Lightbox{
     static init(Links){
         const gallery = Links.map(link=>link.getAttribute('href'));
-        Links
-        .forEach(link=>link.addEventListener('click', e=>{
+        Links.forEach(link=>link.addEventListener('click', e=>{
             e.preventDefault();
             new Lightbox(e.currentTarget.getAttribute('href'), gallery);
         }))
@@ -49,8 +48,6 @@ class Lightbox{
             document.querySelector('.lightbox').parentElement.removeChild(document.querySelector('.lightbox'))
         }, 500) 
         document.removeEventListener('keyup', this.onekeyUp)
-        // main.setAttribute("aria-hidden",'false');
-        // document.querySelector('.lightbox').setAttribute("aria-hidden",'true');
         document.removeEventListener("keydown", this.preventOutsideNavigation); 
     }
     next(e){
@@ -99,10 +96,8 @@ class Lightbox{
     buildDOM(){
         const template = document.getElementById("lightbox_modal");
         const clone = document.importNode(template.content,true);
+        
         // je bind this pour que this à l'interieur de close face refercence à notre instance lightbox 
-        // et non pas à l'element sur lequel on vient de cliqué
-        // main.setAttribute("aria-hidden",'true');
-        // clone.querySelector('.lightbox').setAttribute("aria-hidden", 'false');
         clone.querySelector('.lightbox_close').addEventListener('click', this.close.bind(this));
         clone.querySelector('.lightbox_next').addEventListener('click', this.next.bind(this));
         clone.querySelector('.lightbox_prev').addEventListener('click', this.prev.bind(this));
@@ -110,5 +105,3 @@ class Lightbox{
         
     }
 }
-// export {Lightbox}
-//  lightbox.init()
