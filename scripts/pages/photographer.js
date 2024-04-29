@@ -62,7 +62,13 @@ class PhotographerPage
         const Tarif = this.photographer.price;
         const tarifAndLikesInsert = new TarifAndLikesInsert(mediaPhotographer, Tarif, namePhotographer);
         const divLikesTarif = tarifAndLikesInsert.getInsertCardDom()
-        mainDOM.appendChild(divLikesTarif);
+        if (document.querySelector('.Somme-like p') == null){
+            mainDOM.appendChild(divLikesTarif);
+        }
+        // }else{
+        //     divLikesTarif.incrementSomme()
+        // }
+        
 
         //actualiser la liste des links et afficher les lightbox
         let Links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]'));

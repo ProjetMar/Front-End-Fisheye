@@ -12,12 +12,15 @@ class MediaFactory {
 class MediaPrincipale{
     constructor(data, namePhotographer){
         this.title = data.title;
-        this.likes = data.likes;
+        this.originalLikes = data.likes;
         this.id = data.id;
         this.namePhotographer = namePhotographer;
 
         if (window.localStorage.getItem(this.title) !== null) {
-            this.likes = window.localStorage.getItem(this.title);
+            this.currentLikes = window.localStorage.getItem(this.title);
+        }
+        else{
+            this.currentLikes = this.originalLikes;
         }
     }
     template(idTemplate){
@@ -30,11 +33,12 @@ class MediaPrincipale{
         const SommeLikesElement = document.querySelector('.Somme-like p'); 
         const selectedElement = document.querySelector("article[id='" + this.id + "']" + " .Likes-media p");
 
-        if(parseInt(selectedElement.textContent) == this.likes ){
-            selectedElement.textContent =this.likes + 1;
-            window.localStorage.setItem(this.title, selectedElement.textContent);
-            
+        if(this.currentLikes == this.originalLikes ){
+            this.currentLikes++;
+            selectedElement.textContent =this.currentLikes;
             SommeLikesElement.textContent = parseInt(SommeLikesElement.textContent) + 1;
+               
+            window.localStorage.setItem(this.title, selectedElement.textContent);
             window.localStorage.setItem(this.namePhotographer, SommeLikesElement.textContent);
         }
     }
@@ -63,7 +67,7 @@ class MediaImage extends MediaPrincipale{
         p.textContent = this.title;
 
         const pNumbreLike = clone.querySelector(".Likes-media").firstElementChild;
-        pNumbreLike.textContent = this.likes;
+        pNumbreLike.textContent = this.currentLikes;
         
         clone.querySelector('span').setAttribute("aria-label", `ajouter un like à ${this.title}`)
         clone.querySelector('span').addEventListener('click', this.incrementLikes.bind(this))
@@ -102,7 +106,7 @@ class MediaVideo extends MediaPrincipale{
         p.textContent = this.title;
 
         const pNumbreLike = clone.querySelector(".Likes-media p");
-        pNumbreLike.textContent = this.likes;
+        pNumbreLike.textContent = this.currentLikes;
         
         clone.querySelector('span').setAttribute("aria-label", `ajouter un like à ${this.title}`)
         clone.querySelector('span').addEventListener('click', this.incrementLikes.bind(this))
@@ -113,11 +117,14 @@ class MediaVideo extends MediaPrincipale{
 class TarifAndLikesInsert{
     constructor(mediaPhotographer, tarif, namePhotographer){
         this.mediaPhotographer=mediaPhotographer;
-        this.SommeLike = this.sommeLike;
+        this.orginalSommeLike = this.sommeLike;
         this.tarif = tarif;
         if (window.localStorage.getItem(namePhotographer) !== null){
-            this.SommeLike = window.localStorage.getItem(namePhotographer)
+            this.curentSommeLike = window.localStorage.getItem(namePhotographer)
+        }else{
+            this.curentSommeLike = this.orginalSommeLike;
         }
+        
     }
     get sommeLike(){
         let Somme = 0
@@ -136,11 +143,14 @@ class TarifAndLikesInsert{
         const clone = this.template("TarifLikesSomme");
 
         const pSommeLike = clone.querySelector('.Somme-like p');
-        pSommeLike.textContent = this.SommeLike;
+        pSommeLike.textContent = this.curentSommeLike;
 
         const pTarif = clone.querySelector('.tarifParJour');
         pTarif.textContent = `${this.tarif}€ / jour`;
         
         return(clone)
     }
+    // incrementSomme(){
+    //     return(document.querySelector('.Somme-like p').textContent = this.curentSommeLike)
+    // }
 }

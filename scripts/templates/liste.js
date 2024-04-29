@@ -15,7 +15,7 @@ function toggleSortOptions() {
     const listItems = document.querySelectorAll('#sortOptions li');
     listItems[0].classList.add('souligne');
     listItems[1].classList.add('souligne');
-
+    //si la liste n'est pas afficher aria-expanded= false
     if (sortButton.getAttribute("aria-expanded") === "false") {
         sortButton.setAttribute("aria-expanded", "true");
         sortOptions.style.visibility = "visible";

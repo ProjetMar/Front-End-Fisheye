@@ -46,8 +46,7 @@ class photographerTemplate {
 
         return(clone)
     }
-    getUserHeaderImgDOM() {
-         
+    getUserHeaderImgDOM() { 
         let clone = this.template('headerImage');
 
         const img = clone.querySelector('img');
@@ -57,7 +56,6 @@ class photographerTemplate {
         return(clone)
     }
     getUserHeaderInfDOM(){
-
         let clone = this.template('photographerInfo');
 
         const h2 = clone.querySelector('h2');
@@ -71,6 +69,4 @@ class photographerTemplate {
 
         return(clone)
     }
-    
 }
-// export {photographerTemplate}
